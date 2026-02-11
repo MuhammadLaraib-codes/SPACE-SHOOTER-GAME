@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entities/players/Player_Node2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/enemies/enemy_generator/EnemyGenerator_Node.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/horizontal_bar_green.png" type="Texture" id=3]
+[ext_resource path="res://assets/background-blue.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 208, 4 )
+
+[node name="GameManager_Node2d" type="Node2D"]
+
+[node name="BlueBackgroundSprite" type="Sprite" parent="."]
+position = Vector2( 200, 300 )
+scale = Vector2( 1.04, 1.54 )
+texture = ExtResource( 4 )
+
+[node name="Player_Node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 200, 560 )
+
+[node name="PlayerBoundary_Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBoundary_Area2D"]
+position = Vector2( 200, 516 )
+shape = SubResource( 1 )
+
+[node name="HorizontalBarGreen" type="Sprite" parent="PlayerBoundary_Area2D"]
+position = Vector2( 200, 516 )
+scale = Vector2( 3.2, 0.799999 )
+texture = ExtResource( 3 )
+
+[node name="Bullets_Node" type="Node" parent="."]
+
+[node name="Enemies_Node" type="Node" parent="."]
+
+[node name="EnemyGenerator_Node" parent="." instance=ExtResource( 2 )]
+
+[connection signal="area_entered" from="PlayerBoundary_Area2D" to="Player_Node2D" method="_on_PlayerBoundary_Area2D_area_entered"]

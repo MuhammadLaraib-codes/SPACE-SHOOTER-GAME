@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ship_blue_stroked.png" type="Texture" id=1]
+[ext_resource path="res://entities/players/Player_Node2D.gd" type="Script" id=2]
+
+[node name="Player_Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BlueShipSprite" type="Sprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
