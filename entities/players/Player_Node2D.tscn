@@ -9,3 +9,10 @@ script = ExtResource( 2 )
 [node name="BlueShipSprite" type="Sprite" parent="."]
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
+
+[node name="PlayerBoundary_Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerBoundary_Area2D"]
+polygon = PoolVector2Array( 0, -16, -16, 8, -16, 8, 16, 8, 16, 8 )
+
+[connection signal="area_entered" from="PlayerBoundary_Area2D" to="." method="_on_PlayerBoundary_Area2D_area_entered"]
